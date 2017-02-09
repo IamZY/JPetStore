@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<package name="struts" extends="struts-default">
+		<action name="SignOnAction" class="com.action.SignOnAction" method="sign">
+			<result name="success" type="stream">
+				<param name="contentType">text/html;charset=UTF-8</param>
+				<param name="inputName">ajaxInputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		<action name="AccountAction" class="com.action.AccountAction" method="register">
+			<result name="success">/account/SignonForm.jsp</result>
+		</action>
+			
+			
+		<action name="exitAction" class="com.action.SignOnAction" method="exit">
+			<result name="success">/index.html</result>
+		</action>	
+			
+			
+		<action name="findMyAccAction" class="com.action.AccountAction" method="findMyAcc">
+			<result name="success">/account/EditAccountForm.jsp</result>
+		</action>	
+			
+		<action name="updateAccAction" class="com.action.AccountAction" method="updateAcc">
+			<result name="success">/catalog/Main.jsp</result>
+		</action>	
+			
+		<action name="findCategoryAction" class="com.action.ProductAction" method="findCategory">
+			<result name="success">/catalog/Category.jsp</result>
+		</action>
+		
+		
+		<action name="findItemAction" class="com.action.ItemAction" method="findItem">
+			<result name="success">/catalog/Product.jsp</result>
+		</action>
+		
+		<action name="findGoodsAction" class="com.action.GoodsAction" method="findGoods">
+			<result name="success">/catalog/Item.jsp</result>
+		</action>
+		
+		<action name="addCartAction" class="com.action.CartAction" method="addCart">
+			<result name="success">/cart/Cart.jsp</result>
+			<result name="false">/cart/TempCart.jsp</result>
+		</action>
+		
+		
+		<action name="findCartAction" class="com.action.CartAction" method="findCart">
+			<result name="success">/cart/Cart.jsp</result>
+		</action>
+		
+		<action name="delCartAction" class="com.action.CartAction" method="delCart">
+			<result name="success" type="chain">findCartAction</result>
+			<result name="false">/cart/TempCart.jsp</result>
+		</action>
+		
+				
+		<action name="showAccountAction" class="com.action.CartAction" method="showCart">
+			<result name="success">/cart/Checkout.jsp</result>
+			<result name="false">/account/SignonForm.jsp</result>
+		</action>	
+		
+		<action name="showOrderAction" class="com.action.OrderAction" method="showOrderAccount">
+			<result name="success">/order/NewOrderForm.jsp</result>
+		</action>	
+		
+		
+		<action name="addOrderAction" class="com.action.OrderAction" method="addOrder">
+			<result name="success">/order/ViewOrder.jsp</result>
+		</action>
+		
+					
+		<action name="findMyOrdersAction" class="com.action.MyAccInfoAction" method="findMyOrders">
+			<result name="success">/order/ListOrders.jsp</result>
+		</action>	
+		
+
+		<action name="findOnesOrderAction" class="com.action.OrderAction" method="findOnesOrders">
+			<result name="success">/order/ViewOrder.jsp</result>
+		</action>			
+		
+	</package>
+</struts>	
